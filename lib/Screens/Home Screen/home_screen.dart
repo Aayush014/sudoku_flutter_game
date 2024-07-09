@@ -44,73 +44,77 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: DragTarget(
                       onAcceptWithDetails: (details) {
-                        if(details.data == index%4){
+                        if (details.data == index % 4) {
                           setState(() {
-                            String text = "${index+1}";
+                            String text = "${index + 1}";
                             tetx.add(text);
                           });
-                          color[index]=Colors.green;
+                          color[index] = Colors.green;
                         }
                       },
                       builder: (context, candidateData, rejectedData) =>
                           Container(
-                            alignment: Alignment.center,
+                        alignment: Alignment.center,
                         height: height / 11,
                         width: height / 11,
                         decoration: BoxDecoration(
                           color: color[index],
                           border: Border.all(color: Colors.black, width: 1.7),
                         ),
-                            child:Text('${index+1}',style: TextStyle(color: Colors.black),),
+                        child: Text(
+                          '${index + 1}',
+                          style: const TextStyle(color: Colors.black),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4,
                 width: width / 1.5,
                 // color: Colors.grey,
                 child: GridView.builder(
                   itemCount: 4,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 0,crossAxisSpacing: 30,
-                        crossAxisCount: 2),
-                    itemBuilder: (context, index) => Draggable(
-                      data:index,
-                      feedback: Material(
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: height / 11,
-                          width: height / 11,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            border: Border.all(
-                                color: Colors.black, width: 1.7),
-                          ),
-                          child: Text(
-                            "${index + 1}".toString(),
-                          ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: 0,
+                      crossAxisSpacing: 30,
+                      crossAxisCount: 2),
+                  itemBuilder: (context, index) => Draggable(
+                    data: index,
+                    feedback: Material(
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: height / 11,
+                        width: height / 11,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          border: Border.all(color: Colors.black, width: 1.7),
+                        ),
+                        child: Text(
+                          "${index + 1}".toString(),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          height: height / 10,
-                          width: height / 10,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            border: Border.all(
-                                color: Colors.black, width: 1.7),
-                          ),
-                          child: Text(
-                            "${index + 1}".toString(),
-                            style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-                          ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: height / 10,
+                        width: height / 10,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          border: Border.all(color: Colors.black, width: 1.7),
+                        ),
+                        child: Text(
+                          "${index + 1}".toString(),
+                          style: const TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                       ),
-                    ),),
+                    ),
+                  ),
+                ),
               )
             ],
           ),
@@ -120,8 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-List<String> tetx=[];
-List<Color> color =[
+
+List<String> tetx = [];
+List<Color> color = [
   Colors.white,
   Colors.white,
   Colors.white,
